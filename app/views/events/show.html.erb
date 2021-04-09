@@ -3,3 +3,10 @@
 <h2><%= User.find(@event.user_id).name %></h2>
 <h5><%= @event.date %></h5>
 <p><%= @event.discription %></p>
+<% if current_user.id == @event.user_id %>
+<%= form_with model: [@event, @event.invites.build] do |f|%>
+<%= f.label :user_name, "Friends Name:" %>
+<%= f.text_field :user_name %>
+<%= f.submit %>
+<% end %>
+<% end %>

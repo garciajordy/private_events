@@ -1,21 +1,22 @@
 class InvitesController < ApplicationController
-    def new
-      @invite = Invite.new
-    end
+  def new
+    @event = Event.find(params[:event_id])
+    @invite = @event.invites.build
+  end
 
-    def create
-      @invite = Invite.new(invite_params)
-      if @invite.save
-        redirect_to root_path
-      else
-        render :new
-      end
+  def create
+    @event = Event.find(params[:event_id])
+    @invite = @event.invites.create(invite_params)
+    if @invite.save
+      redirect_to root_path
+    else
+      render :new
     end
- 
-    private
-    def invite_params
-        params.require(:invite).permit(:user_name)
-    end
+  end
 
+  private
 
+  def invite_params
+    params.require(:invite).permit(:user_name)
+  end
 end

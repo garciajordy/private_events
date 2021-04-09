@@ -1,7 +1,23 @@
 <h1>Hello index page</h1>
+<div class="d-flex">
+    <% @events.each do |event| %>
 
-<% @events.each do |event| %>
-<%= event.date %>
-<%= event.discription %>
-<%= link_to "blal", event %>
-<% end %>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"><%= event.date %></h5>
+            <p class="card-text"><%= event.discription %></p>
+            <%= link_to "Show", event, class: "btn btn-primary" %>
+            <% @new = Invite.where(event_id: "5").id %>
+            <%= @new %>
+
+            <% if @new.any? %>
+
+
+
+            <button class="btn btn-success">Attend</button>
+            <% end %>
+
+        </div>
+    </div>
+    <% end %>
+</div>

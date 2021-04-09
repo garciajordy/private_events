@@ -1,9 +1,7 @@
 class EventsController < ApplicationController
-    before_action :logged_in_user
+  before_action :logged_in_user
 
-    
-  def home
-  end
+  def home; end
 
   def show
     @event = Event.find(params[:id])
@@ -15,6 +13,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    
   end
 
   def create
@@ -22,7 +21,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user_id = current_user.id
     if @event.save
-      flash[:success] = "event has been created!"
+      flash[:success] = 'event has been created!'
       redirect_to root_path
     else
       render :new
@@ -36,7 +35,7 @@ class EventsController < ApplicationController
   def update
     @event = current_user.events.find(params[:id])
     if @event.update_attributes(event_params)
-      flash[:success] = "event updated"
+      flash[:success] = 'event updated'
       redirect_to @event
     else
       render 'edit'
@@ -45,11 +44,11 @@ class EventsController < ApplicationController
 
   def destroy
     @event = current_user.events.find(params[:id])
-    if @event 
+    if @event
       @event.destroy
-      flash[:success] = "event has been deleted"
+      flash[:success] = 'event has been deleted'
     else
-      flash[:alert] = "Error"
+      flash[:alert] = 'Error'
     end
     redirect_to root_path
   end
