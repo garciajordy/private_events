@@ -1,5 +1,5 @@
 <div class="container col-6 offset-3">
-    <%= form_with model: [@user, @user.events.build ] do |form|%>
+    <%= form_with model: @event do |form|%>
 
     <div class="form_group">
         <%= form.label :date %>
