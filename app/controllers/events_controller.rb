@@ -1,25 +1,31 @@
 class EventsController < ApplicationController
     before_action :logged_in_user
- def home
+
+    
+  def home
   end
-  
+
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def new
-    @event = Event.new
     @user = current_user
- end
+    @event = current_user.events.build
+  end
 
   def index
     @events = Event.all
   end
 
   def create
-    @event = Event.new(event_params)
     @user = current_user
+    @event = @user.events.create(event_params)
     if @event.save
       flash[:success] = "event has been created!"
-      redirect_to @event
+      redirect_to root_path
     else
-      render 'new'
+      render :new
     end
   end
 

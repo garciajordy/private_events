@@ -1,12 +1,17 @@
 <nav class="navbar mb-2">
     <div class="container-fluid">
         <div class="navbar-header">
-            <%= link_to "Items", root_path, class: "mx-2" %>
+            <%= link_to "Events", root_path, class: "mx-2" %>
         </div>
         <% if logged_in? %>
         <ul class="nav navbar-right ">
+            <li><%= link_to "Create Event", new_event_path(current_user.id), class: "mx-2"%></li>
+        </ul>
+
+        <ul class="nav navbar-right ">
             <li><%= link_to "Log out", logout_path, class: "mx-2", method: :delete %></li>
         </ul>
+
         <% else %>
         <ul class="nav navbar-right ">
             <li><%= link_to "Log in", login_path, class: "mx-2" %></li>

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root 'events#index'
-  resources :users do
-    resources :events
-  end
+  resources :users 
+  resources :events
   get '/signup', to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

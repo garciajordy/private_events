@@ -1,22 +1,17 @@
-
 <div class="container col-6 offset-3">
- <%= form_with model: [ @user, @user.events.build ] do |form|%>
-    <% @user.errors.full_messages_for(:date).each do |msg| %>
-        <%= msg%>
-        <%  end %>
-  <div class="form_group">
-    <%= form.label :date %>
-    <%= form.date_field :date%>
-  </div>
-  <% @user.errors.full_messages_for(:discription).each do |msg| %>
-    <%= msg%>
-    <%  end %>
-  <div class="form_group">
-    <%= form.label :discription %>
-    <%= form.text_field :discription%>
-  </div>
+    <%= form_with model: [@user, @user.events.build ] do |form|%>
 
-   <%= form.submit 'create event'%>
-   <%= link_to "Back", root_path %>
-   <% end %>
+    <div class="form_group">
+        <%= form.label :date %>
+        <%= form.date_field :date%>
+    </div>
+
+    <div class="form_group">
+        <%= form.label :discription %>
+        <%= form.text_field :discription%>
+    </div>
+
+    <%= form.submit 'create event'%>
+    <%= link_to "Back", root_path %>
+    <% end %>
 </div>

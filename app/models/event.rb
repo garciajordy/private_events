@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
-  belongs_to :creator, class_name: 'User'
+  belongs_to :user
+  has_many :invites
   validates :discription, presence: true
   validates :date, presence: true
 end
