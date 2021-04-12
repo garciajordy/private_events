@@ -61,7 +61,7 @@ $ http://localhost:3000/events/new
 ```
 > To invite a friend , navigate to:
 
-- User's show page by clicking on <name>'s Page navigation link in the top right navbar. 
+- User's show page by clicking on \<name>'s Page navigation link in the top right navbar. 
 - Event show page by clicking on the show button on your event card.
 - Choose friend's name from the select options and click invite.
 
