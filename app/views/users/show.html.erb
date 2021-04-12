@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="offset-4 col-md-4">
+        <h1 class='text-center mt-5 text-info'>
+            <%= @user.name.capitalize %>'s Events
+        </h1>
+    </div>
+</div>
+<div class="col-12 w-100 mt-5">
+    <div>
+        <h3 class="text-center text-secondary">Created Events:</h3>
+        <div class="grid-con2">
+            <% current_user.events.order("date ASC").each do |event|%>
+            <div class="card text-center">
+                <div class="card-body">
+                    <h6 class="card-title"><%= event.date%></h6>
+                    <p class="card-text"><%= event.discription %></p>
+                    <%= link_to "show", event, class: "btn btn-primary" %>
+                    <%= link_to "back", root_path, class: "btn btn-secondary" %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <div class="row mt-5">
+        <div class="col-6">
+            <h3 class="text-center text-success">Upcoming Events</h3>
+            <div class="grid-con">
+                <% current_user.attended_events.upcoming_events.order("date ASC").each do |event|%>
+                <div class="card text-center mx-2">
+                    <div class="card-body">
+                        <h6 class="card-title"><%= event.date%></h6>
+                        <p class="card-text"><%= event.discription %></p>
+                        <%= link_to "show", event, class: "btn btn-primary" %>
+                        <%= link_to "back", root_path, class: "btn btn-secondary" %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <h3 class="text-center text-danger">Past Events</h3>
+            <div class="grid-con">
+                <% current_user.attended_events.past_events.order("date DESC").each do |event|%>
+                <div class="card text-center mx-2">
+                    <div class="card-body">
+                        <h6 class="card-title"><%= event.date%></h6>
+                        <p class="card-text"><%= event.discription %></p>
+                        <%= link_to "show", event, class: "btn btn-primary" %>
+                        <%= link_to "back", root_path, class: "btn btn-secondary" %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

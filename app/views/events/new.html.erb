@@ -1,0 +1,28 @@
+<h1 class="text-center mt-2">Create Event</h1>
+
+<div class="container mt-5 col-6 offset-3">
+    <%= form_with model: @event do |form|%>
+    <% @event.errors.full_messages_for(:date).each do |message|%>
+    <div class="alert alert-danger mt-2 alert-dismissible fade show" role="alert">
+        <%= message %>
+    </div>
+    <% end %>
+    <div class="form_group">
+        <%= form.label :date %>
+        <%= form.date_field :date, class: "form-control"%>
+    </div>
+    <% @event.errors.full_messages_for(:discription).each do |message|%>
+
+    <div class="alert alert-danger mt-2 alert-dismissible fade show" role="alert">
+        <%= message %>
+    </div>
+    <% end %>
+    <div class="form_group">
+        <%= form.label :discription, "Description" %>
+        <%= form.text_area :discription, class: "form-control"%>
+    </div>
+
+    <%= form.submit 'create event', class: "btn mt-2 btn-primary"%>
+    <%= link_to "Back", root_path, class: "btn mt-2 btn-secondary" %>
+    <% end %>
+</div>

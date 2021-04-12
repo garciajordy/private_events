@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <%= link_to "Events", root_path, class: "navbar-brand" %>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <%= link_to "Home", root_path, class: "nav-link" %>
+            </li>
+        </ul>
+        <ul class="navbar-nav navbar-right ">
+            <li class="nav-item"><%= loggedin1 %></li>
+
+            <li class="nav-item"><%= loggedin2 %></li>
+
+            <li class="nav-item"><%= loggedin3 %></li>
+
+            <li class="nav-item"><%= loggedout1 %></li>
+            <li class="nav-item"><%= loggedout2 %></li>
+        </ul>
+    </div>
+</nav>

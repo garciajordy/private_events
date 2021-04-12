@@ -1,0 +1,36 @@
+<h1 class="text-center">Event Show Page</h1>
+
+<h2 class="text-center"><%= User.find(@event.creator_id).name.capitalize %></h2>
+<h5 class="text-center"><%= @event.date %></h5>
+<p class="text-center"><%= @event.discription %></p>
+<% @options = option(@event) %>
+<%= form_with model: [@event, @event.invites.build] do |f|%>
+<div class="form-group">
+    <%= formoption(f, @event) %><br>
+    <%= formlabel(f, @options, @event) %>
+</div>
+<%= formbutton(f, @event) %>
+<% end %>
+
+<% endin %>
+<% @id = invite2 %>
+<% @test = invite3 %>
+
+
+<div class="text-center my-3"><%= accept(@id, @event) %></div>
+
+
+<div>
+    <h3 class="text-center text-warning">Attendees</h3>
+    <div class="gird-con">
+        <% @attendees = attended_users(@event) %>
+        <% @event.attendees.each do |attendee|%>
+        <% @invi = invite4(@event, attendee)%>
+        <ul class="list-group">
+            <li class='list-group-item text-center'>
+                <p> <%= attendee1(@invi, attendee)%></p>
+            </li>
+        </ul>
+        <%end%>
+    </div>
+</div>
