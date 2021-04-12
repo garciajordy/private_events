@@ -26,5 +26,25 @@ RSpec.describe Event, type: :model do
  
   end
 
-  
+  context "scopes" do
+    it "returns two for past_events" do 
+      u = User.create(name:"donat")
+      Event.create(date:"05/01/2021", discription:"study", creator_id:u.id)
+      Event.create(date:"12/01/2021", discription:"study", creator_id:u.id)
+      Event.create(date:"05/05/2021", discription:"study", creator_id:u.id)
+      Event.create(date:"01/06/2021", discription:"study", creator_id:u.id)
+      Event.create(date:"03/07/2021", discription:"study", creator_id:u.id)
+      expect(Event.past_events.count).to eq(2)
+    end
+
+    it "returns three for upcoming_events" do 
+      u = User.create(name:"donat")
+      Event.create(date:"05/01/2021", discription:"study", creator_id:u.id)
+      Event.create(date:"12/01/2021", discription:"study", creator_id:u.id)
+      Event.create(date:"05/05/2021", discription:"study", creator_id:u.id)
+      Event.create(date:"01/06/2021", discription:"study", creator_id:u.id)
+      Event.create(date:"03/07/2021", discription:"study", creator_id:u.id)
+      expect(Event.upcoming_events.count).to eq(3)
+    end
+  end 
 end
