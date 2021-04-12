@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Members-only
+# Private_events
 
 In this private_event project we created a simple website where user must first login before creating events. Users also can exchange invitations for their own events.
 
