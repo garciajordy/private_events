@@ -1,17 +1,17 @@
 require 'rails_helper'
-
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Invite, type: :model do
   context 'check for validations for invite' do
     it 'return false if user_id is not provided' do
       u1 = User.create(name: 'Jordy')
-      u2 = User.create(name: 'dodo')
+      User.create(name: 'dodo')
       e = Event.create(date: '05/12/2021', discription: 'study', creator_id: u1.id)
       expect(Invite.create(event_id: e.id)).to_not be_valid
     end
     it 'return false if event_id is not provided' do
-      u1 = User.create(name: 'Jordy')
+      User.create(name: 'Jordy')
       u2 = User.create(name: 'dodo')
-      e = Event.create(date: '05/12/2021', discription: 'study', creator_id: u1.id)
+      Event.create(date: '05/12/2021', discription: 'study', creator_id: u1.id)
       expect(Invite.create(user_id: u2.id)).to_not be_valid
     end
 
@@ -41,3 +41,4 @@ RSpec.describe Invite, type: :model do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
