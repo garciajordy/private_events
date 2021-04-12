@@ -36,4 +36,8 @@ class InvitesController < ApplicationController
   def invite_params
     params.require(:invite).permit(:user_id)
   end
+
+  def update_params
+    params.require(:invite).permit(:user_name, :attendence)
+  end
 end
