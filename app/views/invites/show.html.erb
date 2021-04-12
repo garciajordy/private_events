@@ -1,0 +1,4 @@
+<div class="alert alert-success" role="alert">
+    <%= current_user.name.capitalize %> you are now invited to the party!!!
+</div>
+<%= link_to "Back", event_path(params[:id]), :click => "#{attent(@invite)}", class: "btn btn-secondary" %>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'events#index'
   resources :users
   resources :events do
-    resources :invites
+  resources :invites
   end
   get '/signup', to: 'users#new'
   get    '/login',   to: 'sessions#new'

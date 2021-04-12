@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(name: params[:session][:name].downcase)
     if user
-      @user = User.find(user.id)
       log_in user
+      @user = User.find(user.id)
       redirect_to root_path
     else
       flash.now[:danger] = 'Invalid name'

@@ -4,7 +4,12 @@ class EventsController < ApplicationController
   def home; end
 
   def show
+    @events = Event.all
+    @check = Invite.accepted.where(user_name: current_user.name)
     @event = Event.find(params[:id])
+    @invite = Invite.where(event_id: params[:id])
+    @id = Invite.where(event_id: params[:id]).where(user_id: current_user.id).where(attendence: false)
+    @test = Invite.where(event_id: params[:id]).where(user_id: current_user.id).where(attendence: true)
   end
 
   def new
@@ -13,13 +18,12 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    
   end
 
   def create
     @user = current_user
     @event = Event.new(event_params)
-    @event.user_id = current_user.id
+    @event.creator_id = current_user.id
     if @event.save
       flash[:success] = 'event has been created!'
       redirect_to root_path
@@ -29,7 +33,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = current_user.events.find(params[:id])
+    @event = current_user.invites.where(event_id: params[:id])
   end
 
   def update
@@ -51,10 +55,6 @@ class EventsController < ApplicationController
       flash[:alert] = 'Error'
     end
     redirect_to root_path
-  end
-
-  def show
-    @event = Event.find(params[:id])
   end
 
   private

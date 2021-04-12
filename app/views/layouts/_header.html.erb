@@ -1,22 +1,21 @@
-<nav class="navbar mb-2">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <%= link_to "Events", root_path, class: "mx-2" %>
-        </div>
-        <% if logged_in? %>
-        <ul class="nav navbar-right ">
-            <li><%= link_to "Create Event", new_event_path(current_user.id), class: "mx-2"%></li>
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <%= link_to "Events", root_path, class: "navbar-brand" %>
 
-        <ul class="nav navbar-right ">
-            <li><%= link_to "Log out", logout_path, class: "mx-2", method: :delete %></li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <%= link_to "Home", root_path, class: "nav-link" %>
+            </li>
         </ul>
+        <ul class="navbar-nav navbar-right ">
+            <li class="nav-item"><%= loggedin1 %></li>
 
-        <% else %>
-        <ul class="nav navbar-right ">
-            <li><%= link_to "Log in", login_path, class: "mx-2" %></li>
-            <li><%= link_to "Sign up", signup_path, class: "mx-2" %></li>
+            <li class="nav-item"><%= loggedin2 %></li>
+
+            <li class="nav-item"><%= loggedin3 %></li>
+
+            <li class="nav-item"><%= loggedout1 %></li>
+            <li class="nav-item"><%= loggedout2 %></li>
         </ul>
-        <% end %>
     </div>
 </nav>

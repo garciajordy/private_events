@@ -1,35 +1,40 @@
-<h1>Hello index page</h1>
-<% @invited = Invite.where(attendence: true)%>
-
-<% @invited.each do |inv|%>
-<%= inv.user_name %>
-<% end %>
-
-<div class="d-flex">
-    <% @events.each do |event| %>
-
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title"><%= event.date %></h5>
-            <p class="card-text"><%= event.discription %></p>
-            <%= link_to "Show", event, class: "btn btn-primary" %>
-            <% @new = Invite.where(event_id: event.id).where(user_name: current_user.name) %>
-
-            <% if @new.any? %>
-            <% @new.each do |num| %>
-            <% if num.attendence %>
-            <% num.attendence = false %>
-            <%= link_to "Cancel", "#", :onclick => "#{num.attendence = false}#{num.save}", class: "btn btn-danger" %>
-            <% else%>
-            <% num.attendence = true %>
-            <%= link_to "accept", "#", :onclick => "#{num.attendence = true}#{num.save}", class: "btn btn-success" %>
-            <% end%>
-            <%= num.attendence %>
-            <% end %>
-
-            <% end %>
-
+<h1 class="text-center mt-3">The Event's Page</h1>
+<div class="flex-row d-flex mt-5">
+    <div class="col-6">
+        <h3 class="text-center text-success">Upcoming Events</h3>
+        <div>
+            <div class="grid-con">
+                <% @events.upcoming_events.order("date ASC").each do |event| %>
+                <div class="card m-2">
+                    <div class=" card-body">
+                        <h5 class="card-title"><%= event.date %></h5>
+                        <p class="card-text"><%= event.discription %></p>
+                        <%= link_to "Show", event, class: "btn btn-primary" %>
+                        <% @invite1 = eventinv(event) %>
+                        <%= invitebut(@invite1,event) %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
         </div>
     </div>
-    <% end %>
+    <div class="col-6">
+        <h3 class="text-center text-danger">Past Events</h3>
+        <div>
+            <div class="grid-con">
+                <% @events.past_events.order("date DESC").each do |event| %>
+                <div class="card m-2">
+                    <div class=" card-body">
+                        <h5 class="card-title"><%= event.date %></h5>
+                        <p class="card-text"><%= event.discription %></p>
+                        <%= link_to "Show", event, class: "btn btn-primary" %>
+                        <% @new = Invite.where(event_id: event.id).where(user_id: current_user.id).where(attendence: false) %>
+                        <% @invite2 = eventinv(event) %>
+                        <%= invitebut2(@invite2, event) %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>
