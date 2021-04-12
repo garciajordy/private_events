@@ -2,7 +2,7 @@
 
 # Private_events
 
-In this private_event project we created a simple website where user must first login before creating events. Users also can exchange invitations for their own events.
+In this private_event project we created a simple website where user must first login before creating events. Users also can exchange invitations only for their own events.
 
 ## Built With
 
@@ -51,15 +51,31 @@ $ rails server
 > In order to use the website signup here:
 
 ```
-$ http://127.0.0.1:3000/signup
+$ http://localhost:3000/signup
 ```
 
 > To create an event , navigate to:
 
 ```
-$ http://127.0.0.1:3000/events/new.2
+$ http://localhost:3000/events/new
 ```
+> To invite a friend , navigate to:
 
+- User's show page by clicking on <name>'s Page navigation link in the top right navbar. 
+- Event show page by clicking on the show button on your event card.
+- Choose friend's name from the select options and click invite.
+
+## Rspec testing
+ > To test all models and scopes, write the following in your terminal:
+ ```
+$ rspec spec/models/user_spec.rb
+```
+```
+$ rspec spec/models/event_spec.rb
+```
+```
+$ rspec spec/models/invite_spec.rb
+```
 ## AUTHOR
 
 **Jordy Garcia**
