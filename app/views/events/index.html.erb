@@ -4,7 +4,7 @@
         <h3 class="text-center text-success">Upcoming Events</h3>
         <div>
             <div class="grid-con">
-                <% @events.upcoming_events.order("date ASC").each do |event| %>
+                <% @upcoming_events.order("date ASC").each do |event| %>
                 <div class="card m-2">
                     <div class=" card-body">
                         <h5 class="card-title"><%= event.date %></h5>
@@ -22,7 +22,7 @@
         <h3 class="text-center text-danger">Past Events</h3>
         <div>
             <div class="grid-con">
-                <% @events.past_events.order("date DESC").each do |event| %>
+                <% @past_events.order("date DESC").each do |event| %>
                 <div class="card m-2">
                     <div class=" card-body">
                         <h5 class="card-title"><%= event.date %></h5>

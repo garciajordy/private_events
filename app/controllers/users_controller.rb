@@ -2,9 +2,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show]
   def show
     @user = User.find(params[:id])
-    @event =
-      @upcoming = Event.upcoming_events
-    @past = Event.past_events
+    @upcoming_events = Event.upcoming_events
+    @past_events = Event.past_events
     @invitations = Invite.accepted
   end
 

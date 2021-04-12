@@ -18,12 +18,13 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @upcoming_events = Event.upcoming_events
+    @past_events = Event.past_events
   end
 
   def create
     @user = current_user
-    @event = Event.new(event_params)
-    @event.creator_id = current_user.id
+    @event = @user.events.build(event_params)
     if @event.save
       flash[:success] = 'event has been created!'
       redirect_to root_path
