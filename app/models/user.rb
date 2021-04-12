@@ -6,4 +6,3 @@ class User < ApplicationRecord
   validates_uniqueness_of :name
   scope :accepted_events, -> { attended_events.where('attendence == ?', true) }
 end
-
